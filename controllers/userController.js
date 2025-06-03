@@ -1,0 +1,49 @@
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Registro de usuario
+exports.register = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const usuarioExistente = await User.findOne({ email });
+    if (usuarioExistente) {
+      return res.status(400).json({ msg: 'El usuario ya existe' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const nuevoUsuario = new User({ name, email, password: hashedPassword });
+    await nuevoUsuario.save();
+
+    res.status(201).json({ msg: 'Usuario registrado correctamente' });
+  } catch (error) {
+    res.status(500).json({ msg: 'Error al registrar usuario', error: error.message });
+  }
+};
+
+// Login de usuario
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const usuario = await User.findOne({ email });
+    if (!usuario) {
+      return res.status(404).json({ msg: 'Usuario no encontrado' });
+    }
+
+    const match = await bcrypt.compare(password, usuario.password);
+    if (!match) {
+      return res.status(401).json({ msg: 'Contraseña incorrecta' });
+    }
+
+    const token = jwt.sign({ id: usuario._id }, process.env.JWT_SECRET, {
+      expiresIn: '1d'
+    });
+
+    res.json({ msg: 'Login exitoso', token });
+  } catch (error) {
+    res.status(500).json({ msg: 'Error al iniciar sesión', error: error.message });
+  }
+};
