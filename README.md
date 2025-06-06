@@ -9,7 +9,7 @@
 ### 📌 Descripción  
 Este es el backend completo para la aplicación **Lista de Tareas Arcade**, desarrollada como parte del curso en GIT Institute Colombia.  
 Permite manejar tareas con autenticación de usuarios, historial de cambios, etiquetas y estadísticas.  
-Fue probado exitosamente con Postman y MongoDB Compass.
+Fue probado con Postman y MongoDB Compass.
 
 ### 🧩 Funcionalidades
 
@@ -19,8 +19,6 @@ Fue probado exitosamente con Postman y MongoDB Compass.
 - Eliminación lógica con historial de acciones  
 - Etiquetas por tarea (por ejemplo: "urgente", "personal")  
 - Estadísticas por usuario (completadas, pendientes, eliminadas)  
-- Arquitectura profesional con modelos, rutas, controladores y middlewares  
-- MongoDB local o Atlas (preparado para producción)
 
 ### 🛠️ Tecnologías
 
@@ -32,14 +30,6 @@ Fue probado exitosamente con Postman y MongoDB Compass.
 - JWT para autenticación  
 - bcryptjs para encriptar contraseñas  
 - dotenv, cors y nodemon
-
-### 📦 Uso
-
-```bash
-git clone https://github.com/tu-usuario/backend-tareas-arcade.git
-cd backend-tareas-arcade
-npm install
-npm run dev
 
 ---
 
@@ -58,8 +48,6 @@ Successfully tested using Postman and MongoDB Compass.
 - Soft delete with action history log  
 - Tagging system per task (e.g., "urgent", "personal")  
 - User statistics (completed, pending, deleted tasks)  
-- Clean architecture: models, routes, controllers, middlewares  
-- MongoDB local or Atlas-ready for production
 
 ### 🛠️ Technologies
 
@@ -72,13 +60,6 @@ Successfully tested using Postman and MongoDB Compass.
 - bcryptjs for password encryption  
 - dotenv, cors, nodemon
 
-### 📦 Usage
-
-```bash
-git clone https://github.com/your-username/backend-tareas-arcade.git
-cd backend-tareas-arcade
-npm install
-npm run dev
 
 
 
