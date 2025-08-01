@@ -6,8 +6,10 @@ const conectarDB = require('./config/db');
 // Configurar variables de entorno
 dotenv.config();
 
-// Conectar a la base de datos
-conectarDB();
+// Conectar a la base de datos solo si no es entorno de test
+if (process.env.NODE_ENV !== 'test') {
+  conectarDB();
+}
 
 // Inicializar app
 const app = express();
@@ -20,8 +22,5 @@ app.use(express.json());
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/tasks', require('./routes/taskRoutes'));
 
-// Puerto
-const PORT = 4000;
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-});
+// Exportar app sin iniciar el servidor
+module.exports = app;

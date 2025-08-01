@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles",
+    "dev": "nodemon ."
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,10 @@
     "mongoose": "^8.15.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "cross-env": "^10.0.0",
+    "jest": "^30.0.5",
+    "mongodb-memory-server": "^10.1.4",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.4"
   }
 }
