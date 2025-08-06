@@ -6,6 +6,10 @@ const jwt = require('jsonwebtoken');
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
 
+  if (!name || !email || !password) {
+  return res.status(400).json({ msg: 'Faltan datos' });
+  }
+
   try {
     const usuarioExistente = await User.findOne({ email });
     if (usuarioExistente) {
@@ -39,6 +43,10 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).json({ msg: 'Faltan datos' });
+  }
+
   try {
     const usuario = await User.findOne({ email });
     if (!usuario) {
@@ -55,9 +63,14 @@ exports.login = async (req, res) => {
       expiresIn: '1h'
     });
 
-    res.json({
+    res.status(200).json({
       msg: 'Login exitoso',
-      token
+      token,
+      user: {
+        id: usuario._id,
+        name: usuario.name,
+        email: usuario.email
+        }
     });
 
   } catch (error) {
