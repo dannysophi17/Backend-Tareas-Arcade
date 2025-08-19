@@ -18,6 +18,6 @@ afterAll(async () => {
 afterEach(async () => {
     const collections = mongoose.connection.collections;
     for (let key in collections) {
-        await collections[key].deleteMany(); //drop()
+        await collections[key].deleteMany(); 
     }
 });

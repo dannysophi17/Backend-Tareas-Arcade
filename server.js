@@ -1,6 +1,8 @@
 const app = require('./index');
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
+const HOST = '127.0.0.1';
 
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`🚀 Servidor corriendo en http://${HOST}:${PORT}`);
 });
+

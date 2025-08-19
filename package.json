@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles",
-    "dev": "nodemon ."
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
