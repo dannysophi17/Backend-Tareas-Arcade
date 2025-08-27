@@ -18,6 +18,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (_req, res) => {
+  res.send('Backend Tareas OFC: OK (use /api/users o /api/tasks)');
+});
+
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 // Rutas
