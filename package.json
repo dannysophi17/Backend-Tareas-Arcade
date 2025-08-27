@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles",
     "dev": "nodemon server.js", 
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
